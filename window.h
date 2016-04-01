@@ -33,12 +33,17 @@ private:
 	QwtTextLabel *m_label;
 	QwtTextLabel *m1_label;
 //	QwtThermo    *thermo;
+	
 	QwtPlot      *plot;
 	QwtPlotCurve *curve;
 
+	
+	QwtPlot      *plot2;
+	QwtPlotCurve *curve2;
+
 	// layout elements from Qt itself http://qt-project.org/doc/qt-4.8/classes.html
 	QVBoxLayout  *vLayout;  // vertical layout
-	QHBoxLayout  *hLayout;  // horizontal layout
+	QHBoxLayout  *hLayout;  // horizontal 
 
 	static const int plotDataSize = 1000;
 
