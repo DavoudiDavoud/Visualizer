@@ -103,6 +103,11 @@ void Window::timerEvent( QTimerEvent * )
 		curve->setSamples(xData, yData, plotDataSize);
 		plot->replot();
 		
+		curve2->setSamples(xData, yData, plotDataSize);
+		plot2->replot();
+
+		
+
 		
 		
 	
