@@ -98,12 +98,14 @@ void Window::timerEvent( QTimerEvent * )
 		value=(double) inval;
 		// add the new input to the plot
 		memmove( yData, yData+1, (plotDataSize-1) * sizeof(double) );
+		
 		yData[plotDataSize-1] = value;
 		curve->setSamples(xData, yData, plotDataSize);
 		plot->replot();
 		
-		curve2->setSamples(xData, yData, plotDataSize);
-		plot2>replot();
+		
+		
+	
 	}
 	// set the thermometer value
 	//thermo->setValue( inVal + 20 );
