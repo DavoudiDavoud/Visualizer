@@ -76,11 +76,7 @@ Window::Window() : func(0),count(0)
 	// At the moment it doesn't do anything else than
 	// running in an endless loop and which prints out "tick"
 	// every second.
-	int inval;
-	double value;
-	double r;
-	const double c1 = 32768*3.3;
-	const double c2 = 3.3/2;
+
 
 	
 	adcreader = new ADCreader();
