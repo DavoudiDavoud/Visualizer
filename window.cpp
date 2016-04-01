@@ -76,6 +76,13 @@ Window::Window() : func(0),count(0)
 	// At the moment it doesn't do anything else than
 	// running in an endless loop and which prints out "tick"
 	// every second.
+	int inval;
+	double value;
+	double r;
+	const double c1 = 32768*3.3;
+	const double c2 = 3.3/2;
+
+	
 	adcreader = new ADCreader();
 	adcreader->start();
 }
@@ -90,16 +97,17 @@ Window::~Window() {
 
 void Window::timerEvent( QTimerEvent * )
 {
-	int inval;
-	double value;
+
 	while(adcreader->read_enable()){
 				
 		inval=adcreader->get_samples();
-		value=(double) inval;
+		value = inval / c1 + c2;
+		r = value *1000/(3.3-v);
+		
 		// add the new input to the plot
 		memmove( yData, yData+1, (plotDataSize-1) * sizeof(double) );
 		
-		yData[plotDataSize-1] = value;
+		yData[plotDataSize-1] = r;
 		curve->setSamples(xData, yData, plotDataSize);
 		plot->replot();
 		
