@@ -35,27 +35,41 @@ Window::Window() : func(0),count(0)
 
 	curve = new QwtPlotCurve;
 	plot = new QwtPlot;
+	
+	curve2 = new QwtPlotCurve;
+	plot2 = new QwtPlot;
+	
+	
 	// make a plot curve from the data and attach it to the plot
 	curve->setSamples(xData, yData, plotDataSize);
 	curve->attach(plot);
 
 	plot->replot();
 	plot->show();
+	
+	curve2->setSamples(xData, yData, plotDataSize);
+	curve2->attach(plot2);
+
+	plot2->replot();
+	plot2->show();
 
 
 	// set up the layout - knob above thermometer
 	vLayout = new QVBoxLayout;
-	vLayout->addWidget(knob);
+//	vLayout->addWidget(knob);
 //	vLayout->addWidget(m_label);
 //	vLayout->addWidget(m1_label);
 //	vLayout->addWidget(thermo);
 
 	// plot to the left of knob and thermometer
 	hLayout = new QHBoxLayout;
-	hLayout->addLayout(vLayout);
-	hLayout->addWidget(plot);
+//	hLayout->addLayout(vLayout);
+	vLayout->addWidget(plot);
+	vLayout->addWidget(plot2);
 
-	setLayout(hLayout);
+	
+
+	setLayout(vLayout);
 
 	// This is a demo for a thread which can be
 	// used to read from the ADC asynchronously.
@@ -87,6 +101,9 @@ void Window::timerEvent( QTimerEvent * )
 		yData[plotDataSize-1] = value;
 		curve->setSamples(xData, yData, plotDataSize);
 		plot->replot();
+		
+		curve2->setSamples(xData, yData, plotDataSize);
+		plot2>replot();
 	}
 	// set the thermometer value
 	//thermo->setValue( inVal + 20 );
