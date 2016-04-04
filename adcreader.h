@@ -19,7 +19,7 @@ public:
 	int no_tty;
 	int inp;
 	int outp;
-	int buff[100];
+	int buff[200];
 
 
 };
