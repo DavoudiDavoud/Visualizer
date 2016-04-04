@@ -93,7 +93,11 @@ Window::~Window() {
 
 void Window::timerEvent( QTimerEvent * )
 {
-
+	int inval;
+	double value;
+	double r;
+	const double c1 = 32768*3.3;
+	const double c2 = 3.3/2;
 	while(adcreader->read_enable()){
 				
 		inval=adcreader->get_samples();
