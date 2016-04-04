@@ -51,6 +51,11 @@ private:
 	// data arrays for the plot
 	double xData[plotDataSize];
 	double yData[plotDataSize];
+	
+		// data arrays for the plot
+	double xData2[plotDataSize];
+	double yData2[plotDataSize];
+
 
         double func;
 	int count;
