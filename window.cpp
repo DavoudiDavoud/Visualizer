@@ -98,7 +98,7 @@ void Window::timerEvent( QTimerEvent * )
 				
 		inval=adcreader->get_samples();
 		value = inval / c1 + c2;
-		r = value *1000/(3.3-v);
+		r = value *1000/(3.3-value);
 		
 		// add the new input to the plot
 		memmove( yData, yData+1, (plotDataSize-1) * sizeof(double) );
