@@ -32,6 +32,12 @@ Window::Window() : func(0),count(0)
 		xData[index] = index;
 		yData[index] = 0;
 	}
+	
+		for( int index=0; index<plotDataSize; ++index )
+	{
+		xData2[index] = index;
+		yData2[index] = 0;
+	}
 
 	curve = new QwtPlotCurve;
 	plot = new QwtPlot;
@@ -47,7 +53,7 @@ Window::Window() : func(0),count(0)
 	plot->replot();
 	plot->show();
 	
-	curve2->setSamples(xData, yData, plotDataSize);
+	curve2->setSamples(xData2, yData2, plotDataSize);
 	curve2->attach(plot2);
 
 	plot2->replot();
@@ -113,7 +119,10 @@ void Window::timerEvent( QTimerEvent * )
 		curve->setSamples(xData, yData, plotDataSize);
 		plot->replot();
 		
-		curve2->setSamples(xData, yData, plotDataSize);
+		memmove( yData2, yData2+1, (plotDataSize-1) * sizeof(double) );
+		
+		yData2[plotDataSize-1] = r;	
+		curve2->setSamples(xData2, yData2, plotDataSize);
 		plot2->replot();
 
 		
