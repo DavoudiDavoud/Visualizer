@@ -101,6 +101,8 @@ void Window::timerEvent( QTimerEvent * )
 	while(adcreader->read_enable()){
 				
 		inval=adcreader->get_samples();
+		fprintf(stderr,"int = %d   \r",inval);
+
 		value = inval / c1 + c2;
 		r = value *1000/(3.3-value);
 		
