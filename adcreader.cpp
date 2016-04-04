@@ -216,7 +216,7 @@ void ADCreader::run()
 	  int value = readData(fd)-0x8000;
 	  buff[inp]=value;
           //fprintf(stderr,"data = %d       \n",buff[inp]);
-	  inp=(inp+1)%100;	
+	  inp=(inp+1)%200;	
 	  
 
 		// if stdout is redirected to a file or pipe, output the data
