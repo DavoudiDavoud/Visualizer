@@ -26,11 +26,7 @@ public:
 
 public slots:
 	void setFunc(double func);
-	int inval;
-	double value;
-	double r;
-	const double c1 = 32768*3.3;
-	const double c2 = 3.3/2;
+
 
 // internal variables for the window class
 private:
