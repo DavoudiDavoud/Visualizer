@@ -242,7 +242,7 @@ int ADCreader::get_samples()
 {
       int ret=buff[outp];
       //fprintf(stderr,"OUTPUT DATA = %d       \n",buff[outp]);	
-      outp=(outp+1)%100;	
+      outp=(outp+1)%200;	
       return ret;
 }
 
