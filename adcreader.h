@@ -20,6 +20,8 @@ public:
 	int inp;
 	int outp;
 	int buff[1000];
+	int buff2[1000];
+
 
 
 };
