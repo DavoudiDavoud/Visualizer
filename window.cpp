@@ -101,27 +101,25 @@ void Window::timerEvent( QTimerEvent * )
 {
 	int inval;
 	double value;
-	double r;
-	const double c1 = 32768*3.3;
-	const double c2 = 3.3/2;
+
 	while(adcreader->read_enable()){
 				
 		inval=adcreader->get_samples();
+		value = (double) inval;
 		fprintf(stderr,"int = %d   \r",inval);
 
-		value = inval / c1 + c2;
-		r = value *1000/(3.3-value);
+		
 		
 		// add the new input to the plot
 		memmove( yData, yData+1, (plotDataSize-1) * sizeof(double) );
 		
-		yData[plotDataSize-1] = r;
+		yData[plotDataSize-1] = value;
 		curve->setSamples(xData, yData, plotDataSize);
 		plot->replot();
 		
 		memmove( yData2, yData2+1, (plotDataSize-1) * sizeof(double) );
 		
-		yData2[plotDataSize-1] = r;	
+		yData2[plotDataSize-1] = value;	
 		curve2->setSamples(xData2, yData2, plotDataSize);
 		plot2->replot();
 
